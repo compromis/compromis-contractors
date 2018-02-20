@@ -25,18 +25,26 @@ export default {
       fields: [
         {
           name: 'ref',
-          sortField: 'ref'
+          sortField: 'ref',
+          title: 'Núm.'
         },
         {
           name: 'title',
           sortField: 'title',
+          title: 'Descripció'
         },
         {
           name: 'budget',
           sortField: 'budget',
           titleClass: 'text-right',
           dataClass: 'text-right',
-          callback: 'formatNumber'
+          callback: 'formatNumber',
+          title: 'Pressupost amb IVA'
+        },
+        {
+          name: 'bid_status',
+          sortField: 'bid_status',
+          title: 'Estat'
         }
       ]
     }
@@ -44,12 +52,24 @@ export default {
 
   methods: {
     formatNumber (value) {
-      return accounting.formatNumber(value, 2)
+      return accounting.formatMoney(value, "€", 2, ".", ",")
     }
   }
 }
 </script>
 
-<style scoped>
+<style lang="scss">
+.vuetable {
+  font-family: Compromis, sans-serif;
 
+  th {
+    background: red;
+    text-align: left;
+    padding: 20px;
+  }
+
+  td {
+    padding: 20px;
+  }
+}
 </style>
