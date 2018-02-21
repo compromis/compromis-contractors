@@ -77,7 +77,7 @@
       </table>
     </div>
 
-    <div class="bid-block">
+    <div v-if="!bid.awarded_to || showSubmissionDetails" class="bid-block">
       <h3>6. PRESENTACIÓ D'OFERTES</h3>
       <div v-if="deadlinePast" class="warning">
         <span class="glyphicon glyphicon-warning-sign"></span> Ja no s'accepten ofertes al haver passat el termini de presentació
@@ -110,6 +110,9 @@
           </td>
         </tr>
       </table>
+    </div>
+    <div v-else class="bid-block">
+      <h3 class="clickable" @click="toggleSubmissionDetails">6. PRESENTACIÓ D'OFERTES <em class="faded pull-right">TANCAT</em></h3>
     </div>
 
     <div class="bid-block">
@@ -146,7 +149,8 @@ export default {
   },
   data () {
     return {
-      bid: {}
+      bid: {},
+      showSubmissionDetails: false
     }
   },
   mounted () {
@@ -182,6 +186,9 @@ export default {
         .catch((error) => {
           console.log(error)
         })
+    },
+    toggleSubmissionDetails () {
+      this.showSubmissionDetails = !this.showSubmissionDetails
     }
   }
 }
@@ -261,6 +268,11 @@ export default {
     &:active {
 
     }
+  }
+
+  h3.clickable {
+    cursor: pointer;
+    border-bottom: 1px $gray-300 solid;
   }
 
   .warning {
