@@ -1,8 +1,17 @@
 <template>
   <div class="bid">
-    <router-link to="/" class="btn">Torna al llistat</router-link>
-    <h2>{{ bid.title }}</h2>
-    <div class="bid-ref">{{ bid.ref }}</div>
+    <router-link to="/" class="back"><span class="glyphicon glyphicon-chevron-left"></span> Torna al llistat</router-link>
+
+    <hr />
+
+    <div class="row">
+      <div class="col-sm-9">
+        <h1>{{ bid.title }}</h1>
+      </div>
+      <div class="col-sm-3">
+        <div class="bid-ref">{{ bid.ref }}</div>
+      </div>
+    </div>
 
     <div class="bid-block">
       <h3>1. ENTITAT LICITADORA</h3>
@@ -163,10 +172,21 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../variables';
   .bid {
     font-family: Compromis, sans-serif;
+  }
+
+  hr {
+    margin: 3rem 0 1rem;
+  }
+
+  .bid-ref {
+    font-size: 3rem;
+    color: $gray-text;
+    margin-top: 1rem;
+    text-align: right;
   }
 
   .bid-block {
@@ -209,6 +229,22 @@ export default {
 
     .faded {
       color: $gray-text;
+    }
+  }
+
+  a.back {
+    border: 1px $orange solid;
+    padding: 0.75rem 1.5rem;
+    border-radius: 20px;
+    transition: 0.2s;
+
+    &:hover {
+      background: $gradient;
+      color: #fff;
+    }
+
+    &:active {
+
     }
   }
 
