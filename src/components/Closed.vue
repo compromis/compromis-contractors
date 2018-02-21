@@ -4,7 +4,8 @@
     <vuetable ref="vuetable"
       api-url="https://compromis.net/espai/contractors/bids/closed"
       :fields="fields"
-      pagination-path="">
+      pagination-path=""
+      @vuetable:cell-clicked="goToDetail">
     </vuetable>
     <vuetable-pagination ref="pagination"></vuetable-pagination>
   </div>
@@ -27,27 +28,34 @@ export default {
       fields: [
         {
           name: 'ref',
-          sortField: 'ref',
           title: 'Núm.'
         },
         {
           name: 'title',
-          sortField: 'title',
           title: 'Descripció'
         },
         {
-          name: 'budget',
-          sortField: 'budget',
+          name: 'awarded_amount',
           titleClass: 'text-right',
           dataClass: 'text-right',
           callback: 'formatNumber',
           title: 'Pressupost amb IVA'
+        },
+        {
+          name: 'awarded_date',
+          titleClass: 'text-right',
+          dataClass: 'text-right',
+          callback: 'formatDate',
+          title: 'Adjudicat'
         }
       ]
     }
   },
 
   methods: {
+    goToDetail (data) {
+      this.$router.push('/bid/' + data.id)
+    },
     formatNumber (value) {
       return accounting.formatMoney(value, '€', 2, '.', ',')
     },
@@ -59,17 +67,35 @@ export default {
 </script>
 
 <style lang="scss">
-.vuetable {
-  font-family: Compromis, sans-serif;
+  @import '../variables';
 
-  th {
-    background: red;
-    text-align: left;
-    padding: 20px;
+  .vuetable {
+    font-family: Compromis, sans-serif;
+    margin-top: 2rem;
+
+    th {
+      text-align: left;
+      padding: 1rem;
+      background: $gray-200;
+    }
+
+    td {
+      padding: 1rem;
+      cursor: pointer;
+    }
+
+    tr:hover td {
+      background: $gray-100;
+      color: $orange;
+    }
+
+    tr:active td {
+      background: darken($gray-100, 5%);
+      color: darken($orange, 5%);
+    }
   }
 
-  td {
-    padding: 20px;
+  .text-right {
+    text-align: right !important;
   }
-}
 </style>
