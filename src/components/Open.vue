@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Anuncis oberts</h2>
+    <h2>Anuncis de licitació</h2>
 
     <div v-if="loading">
       Carregant...
