@@ -5,11 +5,11 @@
     <hr />
 
     <div class="row">
+      <div class="col-sm-3 pull-right">
+        <div class="bid-ref">{{ bid.ref }}</div>
+      </div>
       <div class="col-sm-9">
         <h1>{{ bid.title }}</h1>
-      </div>
-      <div class="col-sm-3">
-        <div class="bid-ref">{{ bid.ref }}</div>
       </div>
     </div>
 
@@ -56,7 +56,10 @@
       <table class="table">
         <tr>
           <th width="25%" style="vertical-align: middle">Import sense IVA</th>
-          <td><span class="currency">{{ bid.budget | formatMoney }}</span></td>
+          <td>
+            <span v-if="bid.budget > 0" class="currency">{{ bid.budget | formatMoney }}</span>
+            <em class="faded" v-else>A determinar</em>
+          </td>
         </tr>
       </table>
     </div>
@@ -76,6 +79,9 @@
 
     <div class="bid-block">
       <h3>6. PRESENTACIÓ D'OFERTES</h3>
+      <div v-if="deadlinePast" class="warning">
+        <span class="glyphicon glyphicon-warning-sign"></span> Ja no s'accepten ofertes al haver passat el termini de presentació
+      </div>
       <table class="table">
         <tr>
           <th width="25%">Documentació a presentar</th>
@@ -121,7 +127,7 @@
         </tr>
       </table>
       <div v-else class="bid-block-text">
-        <em class="faded">Per adjudicar</em>
+        <em class="faded">Pendent d'adjudicació</em>
       </div>
     </div>
   </div>
@@ -159,6 +165,12 @@ export default {
       return (this.bid.processing === 'urgent') ? 'Urgència'
         : (this.bid.processing === 'emergency') ? 'Emergència'
           : 'Ordinària'
+    },
+    deadlinePast: function () {
+      const deadline = new Date(this.bid.submission_deadline)
+      const now = new Date()
+
+      return deadline < now
     }
   },
   methods: {
@@ -249,6 +261,13 @@ export default {
     &:active {
 
     }
+  }
+
+  .warning {
+    background-color: lighten($warning-color, 45%);
+    color: $warning-color;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px lighten($warning-color, 25%) solid;
   }
 
   @media only screen and (max-width: 760px) {

@@ -9,7 +9,7 @@
     </div>
     <div class="bid-row bid-details">
       <div class="bid-entity">{{ bid.entity }}</div>
-      <div v-if="deadlinePast" class="bid-deadline bid-review">En revisió</div>
+      <div v-if="deadlinePast" class="bid-deadline bid-review">En procés d'adjudicació</div>
       <div v-else class="bid-deadline">Data límit: <span>{{ bid.submission_deadline | formatDate }}</span></div>    </div>
   </router-link>
 </template>
