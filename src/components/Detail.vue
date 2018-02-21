@@ -148,7 +148,7 @@ export default {
   },
   filters: {
     formatMoney: function (value) {
-      return accounting.formatMoney(value, '€ ', 0, '.', ',')
+      return accounting.formatMoney(value, '€ ', 2, '.', ',')
     },
     formatDate: function (value) {
       return dateFormat(new Date(value), 'dd/mm/yyyy')
