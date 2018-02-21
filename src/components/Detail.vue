@@ -130,6 +130,7 @@
 <script>
 import axios from 'axios'
 import accounting from 'accounting'
+import dateFormat from 'dateformat'
 import Nl2br from 'vue-nl2br'
 
 export default {
@@ -150,7 +151,7 @@ export default {
       return accounting.formatMoney(value, '€ ', 0, '.', ',')
     },
     formatDate: function (value) {
-      return value
+      return dateFormat(new Date(value), 'dd/mm/yyyy')
     }
   },
   computed: {

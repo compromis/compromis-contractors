@@ -16,6 +16,7 @@
 
 <script>
 import accounting from 'accounting'
+import dateFormat from 'dateformat'
 
 export default {
   name: 'open-bid',
@@ -27,7 +28,7 @@ export default {
       return accounting.formatMoney(value, '€ ', 0, '.', ',')
     },
     formatDate: function (value) {
-      return value
+      return dateFormat(new Date(value), 'dd/mm/yyyy')
     }
   },
   computed: {

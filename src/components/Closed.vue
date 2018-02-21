@@ -14,6 +14,7 @@
 import Vuetable from 'vuetable-2/src/components/Vuetable'
 import VuetablePagination from 'vuetable-2/src/components/VuetablePagination'
 import accounting from 'accounting'
+import dateFormat from 'dateformat'
 
 export default {
   name: 'closed',
@@ -49,6 +50,9 @@ export default {
   methods: {
     formatNumber (value) {
       return accounting.formatMoney(value, '€', 2, '.', ',')
+    },
+    formatDate (value) {
+      return dateFormat(new Date(value), 'dd/mm/yyyy')
     }
   }
 }
