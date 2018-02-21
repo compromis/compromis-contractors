@@ -5,6 +5,7 @@
       api-url="https://compromis.net/espai/contractors/bids/closed"
       :fields="fields"
       pagination-path=""
+      no-data-template="Encara no hi ha adjudicacions"
       @vuetable:cell-clicked="goToDetail">
     </vuetable>
     <vuetable-pagination ref="pagination"></vuetable-pagination>
