@@ -5,7 +5,7 @@
     <div class="bid-ref">{{ bid.ref }}</div>
 
     <div class="bid-block">
-      <h3>1. ENTITAT</h3>
+      <h3>1. ENTITAT LICITADORA</h3>
       <div class="bid-block-content">
         {{ bid.entity }}
       </div>
@@ -24,7 +24,7 @@
         <tr>
           <th>Lloc de lliurament</th>
           <td>{{ bid.location }}</td>
-          <th>Termini de lliurament</th>
+          <th>Termini de lliurament del servei</th>
           <td>{{ bid.deadline | formatDate }}</td>
         </tr>
       </table>
@@ -43,17 +43,17 @@
     </div>
 
     <div class="bid-block">
-      <h3>4. PRESSUPOST</h3>
+      <h3>4. PRESSUPOST MÀXIM</h3>
       <table class="table">
         <tr>
-          <th>Import amb IVA</th>
+          <th>Import sense IVA</th>
           <td>{{ bid.budget | formatMoney }}</td>
         </tr>
       </table>
     </div>
 
     <div class="bid-block">
-      <h3>5. REQUISITS ESPECÍFICS DEL CONTRACTISTA</h3>
+      <h3>5. CRITERIS DE VALORACIÓ DE LES OFERTES</h3>
       <div class="bid-block-text">
         <nl2br v-if="bid.requirements && bid.requirements != '0'" tag="div" :text="bid.requirements" />
         <em v-else>Sense especificar</em>
@@ -158,4 +158,30 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../variables';
+  .bid {
+    font-family: Compromis, sans-serif;
+  }
+
+  .bid-block {
+    border: $default-border;
+    margin-bottom: 2rem;
+
+    h3 {
+      background: $gray-100;
+      font-size: 1.35rem;
+      letter-spacing: 1px;
+      padding: 0.75rem 2rem;
+      border-bottom: 1px $gray-200 solid;
+    }
+
+    .table {
+
+    }
+
+    .bid-block-content {
+      padding: 1rem 2rem;
+      font-size: 2rem;
+    }
+  }
 </style>
