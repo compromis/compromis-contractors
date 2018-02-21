@@ -5,7 +5,7 @@
     <div class="bid-info">
       <div class="bid-budget">{{ bid.budget | formatMoney }}</div>
       <div v-if="deadlinePast" class="bid-deadline bid-review">En revisió</div>
-      <div v-else class="bid-deadline">Data límit: <span>{{ bid.deadline | formatDate }}</span></div>
+      <div v-else class="bid-deadline">Data límit: <span>{{ bid.submission_deadline | formatDate }}</span></div>
     </div>
   </router-link>
 </template>
@@ -28,7 +28,7 @@ export default {
   },
   computed: {
     deadlinePast: function () {
-      const deadline = new Date(this.bid.deadline)
+      const deadline = new Date(this.bid.submission_deadline)
       const now = new Date()
 
       return deadline < now
