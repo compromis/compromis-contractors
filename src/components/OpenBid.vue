@@ -38,16 +38,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import '../variables';
+
   .bid {
     font-family: Compromis, sans-serif;
     display: flex;
-    border: 2px #d1d2d3 solid;
+    border: 2px $gray-300 solid;
     margin: 2rem 0;
     padding: 2rem;
     transition: 0.2s;
 
     &:hover {
-      background: #f1f2f3;
+      background: $gray-100;
 
       .bid-ref span {
         background: #fff;
@@ -55,7 +57,7 @@ export default {
     }
 
     &:active {
-      background: #e1e2e3;
+      background: $gray-200;
     }
   }
 
@@ -68,8 +70,8 @@ export default {
 
     span {
       display: block;
-      color: #818283;
-      background: #f1f2f3;
+      color: $gray-text;
+      background: $gray-100;
       padding: 5px 10px;
       border-radius: 5px;
       text-align: center;
@@ -88,20 +90,20 @@ export default {
 
   .bid-budget {
     font-size: 2.5rem;
-    color: #818283;
+    color: $gray-text;
   }
 
   .bid-deadline {
-    color: #818283;
+    color: $gray-text;
 
     span {
-      color: #2ecc71;
+      color: $success-color;
       font-weight: bold;
     }
   }
 
   .bid-review {
-    color: #e67e22;
+    color: $warning-color;
     font-weight: bold;
   }
 </style>
