@@ -99,7 +99,7 @@
           <td>{{ bid.submission_commitment }}</td>
           <th>Document adjunt</th>
           <td>
-            <a v-if="bid.attachment" :href="bid.attachment" target="_blank" rel="noopener">{{ bid.attachment }}</a>
+            <a v-if="bid.attachment" :href="bid.attachment" target="_blank" rel="noopener"><span class="glyphicon glyphicon-cloud-download"></span> {{ bid.attachment }}</a>
             <em class="faded" v-else>Cap</em>
           </td>
         </tr>
