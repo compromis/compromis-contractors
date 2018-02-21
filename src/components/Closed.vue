@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h2>Arxiu d'adjudicacions</h2>
     <vuetable ref="vuetable"
       api-url="https://compromis.net/espai/contractors/bids/closed"
       :fields="fields"

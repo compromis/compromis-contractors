@@ -10,7 +10,7 @@ import Open from './Open'
 import Closed from './Closed'
 
 export default {
-  name: 'main',
+  name: 'home',
   components: {
     Open,
     Closed
