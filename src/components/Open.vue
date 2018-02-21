@@ -2,7 +2,7 @@
   <div>
     <h2>Anuncis oberts</h2>
 
-    <open-bid v-for="bid in bids" :bid="bid" />
+    <open-bid v-for="bid in bids" :key="bid.id" :bid="bid" />
   </div>
 </template>
 
@@ -28,7 +28,6 @@ export default {
       axios.get('https://compromis.net/espai/contractors/bids/open')
         .then((response) => {
           this.bids = response.data.data
-          console.log(response)
         })
         .catch(function (error) {
           console.log(error)
