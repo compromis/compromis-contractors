@@ -1,12 +1,16 @@
 <template>
   <router-link :to="'/bid/' + bid.id" class="bid">
-    <div class="bid-ref"><span>{{ bid.ref }}</span></div>
-    <div class="bid-title">{{ bid.title }}</div>
-    <div class="bid-info">
-      <div class="bid-budget">{{ bid.budget | formatMoney }}</div>
-      <div v-if="deadlinePast" class="bid-deadline bid-review">En revisió</div>
-      <div v-else class="bid-deadline">Data límit: <span>{{ bid.submission_deadline | formatDate }}</span></div>
+    <div class="bid-row">
+      <div class="bid-ref"><span>{{ bid.ref }}</span></div>
+      <div class="bid-title">{{ bid.title }}</div>
+      <div class="bid-info">
+        <div class="bid-budget">{{ bid.budget | formatMoney }}</div>
+      </div>
     </div>
+    <div class="bid-row bid-details">
+      <div class="bid-entity">{{ bid.entity }}</div>
+      <div v-if="deadlinePast" class="bid-deadline bid-review">En revisió</div>
+      <div v-else class="bid-deadline">Data límit: <span>{{ bid.submission_deadline | formatDate }}</span></div>    </div>
   </router-link>
 </template>
 
@@ -41,12 +45,16 @@ export default {
   @import '../variables';
 
   .bid {
+    display: block;
     font-family: Compromis, sans-serif;
-    display: flex;
-    border: 2px $gray-300 solid;
+    border: $default-border;
     margin: 2rem 0;
     padding: 2rem;
     transition: 0.2s;
+
+    .bid-row {
+      display: flex;
+    }
 
     &:hover {
       background: $gray-100;
@@ -82,6 +90,15 @@ export default {
     font-size: 1.75rem;
   }
 
+  .bid-entity {
+    color: $gray-text;
+    margin-left: 100px;
+  }
+
+  .bid-details {
+    margin-top: 1rem;
+  }
+
   .bid-info {
     width: 200px;
     margin-left: auto;
@@ -95,6 +112,7 @@ export default {
 
   .bid-deadline {
     color: $gray-text;
+    margin-left: auto;
 
     span {
       color: $success-color;
