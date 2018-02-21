@@ -1,7 +1,7 @@
 <template>
   <div>
     <vuetable ref="vuetable"
-      api-url="https://compromis.net/espai/contractors/bids"
+      api-url="https://compromis.net/espai/contractors/bids/closed"
       :fields="fields"
       pagination-path="">
     </vuetable>
@@ -15,7 +15,7 @@ import VuetablePagination from 'vuetable-2/src/components/VuetablePagination'
 import accounting from 'accounting'
 
 export default {
-  name: 'HelloWorld',
+  name: 'closed',
   components: {
     Vuetable,
     VuetablePagination
@@ -40,11 +40,6 @@ export default {
           dataClass: 'text-right',
           callback: 'formatNumber',
           title: 'Pressupost amb IVA'
-        },
-        {
-          name: 'bid_status',
-          sortField: 'bid_status',
-          title: 'Estat'
         }
       ]
     }
@@ -52,7 +47,7 @@ export default {
 
   methods: {
     formatNumber (value) {
-      return accounting.formatMoney(value, "€", 2, ".", ",")
+      return accounting.formatMoney(value, '€', 2, '.', ',')
     }
   }
 }

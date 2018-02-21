@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Table from '@/components/Table'
+import Main from '@/components/Main'
 
 Vue.use(Router)
 
@@ -9,7 +9,7 @@ export default new Router({
     {
       path: '/',
       name: 'Main',
-      component: Table
+      component: Main
     }
   ]
 })
