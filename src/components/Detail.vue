@@ -155,7 +155,9 @@ export default {
   },
   computed: {
     processing: function () {
-      return this.bid.processing
+      return (this.bid.processing === 'urgent') ? 'Urgència'
+        : (this.bid.processing === 'emergency') ? 'Emergència'
+          : 'Ordinària'
     }
   },
   methods: {
