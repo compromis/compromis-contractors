@@ -1,6 +1,6 @@
 <template>
   <router-link :to="'/bid/' + bid.id" class="bid">
-    <div class="bid-row">
+    <div class="bid-row bid-basic">
       <div class="bid-ref"><span>{{ bid.ref }}</span></div>
       <div class="bid-title">{{ bid.title }}</div>
       <div class="bid-info">
@@ -129,5 +129,37 @@ export default {
   .bid-review {
     color: $warning-color;
     font-weight: bold;
+  }
+
+  @media only screen and (max-width: 760px) {
+    .bid-basic {
+      flex-wrap: wrap;
+
+      .bid-ref {
+        order: 1;
+        width: 50%;
+      }
+
+      .bid-info {
+        order: 2;
+        width: 50%;
+      }
+
+      .bid-title {
+        order: 3;
+        width: 100%;
+        margin-top: 1rem;
+      }
+    }
+
+    .bid-details {
+      flex-wrap: wrap;
+
+      .bid-published,
+      .bid-entity,
+      .bid-deadline {
+        width: 100%;
+      }
+    }
   }
 </style>
