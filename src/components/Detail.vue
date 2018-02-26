@@ -202,11 +202,11 @@ export default {
   }
 
   hr {
-    margin: 3rem 0 1rem;
+    margin: 2rem 0;
   }
 
   .bid-title {
-    margin-bottom: 2rem;
+    margin: 0 0 2rem;
     line-height: 1.25;
   }
 
@@ -267,10 +267,12 @@ export default {
   }
 
   a.back {
+    display: inline-block;
     border: 1px $orange solid;
     padding: 0.75rem 1.5rem;
     border-radius: 20px;
     transition: 0.2s;
+    margin-top: 1rem;
 
     &:hover {
       background: $gradient;
