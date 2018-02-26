@@ -13,5 +13,6 @@ export default {
 <style>
   #app {
     font-family: Compromis, sans-serif;
+    line-height: 1.5;
   }
 </style>

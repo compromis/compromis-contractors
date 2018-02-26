@@ -9,7 +9,7 @@
         <div class="bid-ref">{{ bid.ref }}</div>
       </div>
       <div class="col-sm-9">
-        <h1>{{ bid.title }}</h1>
+        <h1 class="bid-title">{{ bid.title }}</h1>
       </div>
     </div>
 
@@ -204,6 +204,11 @@ export default {
     margin: 3rem 0 1rem;
   }
 
+  .bid-title {
+    margin-bottom: 2rem;
+    line-height: 1.25;
+  }
+
   .bid-ref {
     font-size: 3rem;
     color: $gray-text;
@@ -222,6 +227,7 @@ export default {
       letter-spacing: 1px;
       padding: 0.75rem 1.5rem;
       border-bottom: 1px $gray-200 solid;
+      margin-bottom: 0;
     }
 
     .table {
