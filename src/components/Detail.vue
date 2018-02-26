@@ -7,6 +7,7 @@
     <div class="row">
       <div class="col-sm-3 pull-right">
         <div class="bid-ref">{{ bid.ref }}</div>
+        <div class="bid-published">{{ bid.published_on | formatDate }}</div>
       </div>
       <div class="col-sm-9">
         <h1 class="bid-title">{{ bid.title }}</h1>
@@ -213,6 +214,11 @@ export default {
     font-size: 3rem;
     color: $gray-text;
     margin-top: 1rem;
+    text-align: right;
+  }
+
+  .bid-published {
+    color: $gray-text;
     text-align: right;
   }
 
