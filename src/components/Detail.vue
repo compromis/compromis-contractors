@@ -162,7 +162,7 @@ export default {
       return accounting.formatMoney(value, '€ ', 2, '.', ',')
     },
     formatDate: function (value) {
-      return dateFormat(new Date(value), 'dd/mm/yyyy')
+      return (value) ? dateFormat(new Date(value), 'dd/mm/yyyy') : '--'
     }
   },
   computed: {
