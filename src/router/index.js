@@ -9,10 +9,14 @@ const scrollBehavior = (to, from, savedPosition) => {
   if (savedPosition) {
     return savedPosition
   } else {
-    return {
-      selector: '#app',
-      offset: { x: 0, y: 0 }
-    }
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve({
+          selector: '#app',
+          offset: { x: 0, y: 0 }
+        })
+      }, 500)
+    })
   }
 }
 
