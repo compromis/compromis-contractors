@@ -106,7 +106,7 @@
           <td>{{ bid.submission_commitment }}</td>
           <th>Document adjunt</th>
           <td>
-            <a v-if="bid.attachment" :href="bid.attachment" target="_blank" rel="noopener"><span class="glyphicon glyphicon-cloud-download"></span> {{ bid.attachment }}</a>
+            <a v-if="bid.attachment" :href="baseUrl + bid.attachment" target="_blank" rel="noopener"><span class="glyphicon glyphicon-cloud-download"></span> {{ bid.attachment }}</a>
             <em class="faded" v-else>Cap</em>
           </td>
         </tr>
@@ -151,7 +151,8 @@ export default {
   data () {
     return {
       bid: {},
-      showSubmissionDetails: false
+      showSubmissionDetails: false,
+      baseUrl: 'https://compromis.net/espai/uploads/contractors/'
     }
   },
   mounted () {
