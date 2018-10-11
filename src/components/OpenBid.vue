@@ -4,7 +4,8 @@
       <div class="bid-ref"><span>{{ bid.ref }}</span></div>
       <div class="bid-title">{{ bid.title }}</div>
       <div class="bid-info">
-        <div class="bid-budget">{{ bid.budget | formatMoney }}</div>
+        <div v-if="bid.budget > 0" class="bid-budget">{{ bid.budget | formatMoney }}</div>
+        <div v-else class="bid-budget">--</div>
       </div>
     </div>
     <div class="bid-row bid-details">
